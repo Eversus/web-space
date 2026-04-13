@@ -3,8 +3,17 @@ $color-text: #ffffff;
 $color-accent: #f5b800;
 $color-muted: #bdbdbd;
 $color-dark-card: #1a1a1a;
+$color-border-soft: rgba(255, 255, 255, 0.08);
 
 $container-width: 1240px;
+$container-padding-mobile: 16px;
+$container-padding-tablet: 24px;
+
+$radius-sm: 12px;
+$radius-md: 20px;
+$radius-lg: 32px;
+
+$transition-default: 0.25s ease;
 
 $bp-sm: 768px;
 $bp-md: 1024px;

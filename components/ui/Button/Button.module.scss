@@ -1,0 +1,27 @@
+@use "../../../styles/variables.scss" as vars;
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 12px 24px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1;
+  transition:
+    background-color vars.$transition-default,
+    color vars.$transition-default,
+    opacity vars.$transition-default;
+}
+
+.primary {
+  background-color: vars.$color-accent;
+  color: #000000;
+}
+
+.secondary {
+  background-color: #ffffff;
+  color: #000000;
+}

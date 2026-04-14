@@ -1,0 +1,16 @@
+@use "../../../styles/variables.scss" as vars;
+
+.input {
+  width: 100%;
+  min-height: 48px;
+  padding: 0 18px;
+  border: 1px solid vars.$color-border-soft;
+  border-radius: 999px;
+  background-color: #ffffff;
+  color: #000000;
+  outline: none;
+
+  &::placeholder {
+    color: #8c8c8c;
+  }
+}

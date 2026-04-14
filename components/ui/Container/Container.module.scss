@@ -1,0 +1,15 @@
+@use "../../../styles/variables.scss" as vars;
+@use "../../../styles/mixins.scss" as *;
+
+.container {
+  width: 100%;
+  max-width: vars.$container-width;
+  margin: 0 auto;
+  padding-left: vars.$container-padding-mobile;
+  padding-right: vars.$container-padding-mobile;
+
+  @include respond-sm {
+    padding-left: vars.$container-padding-tablet;
+    padding-right: vars.$container-padding-tablet;
+  }
+}

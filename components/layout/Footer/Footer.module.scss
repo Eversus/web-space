@@ -107,3 +107,14 @@
     border-color: vars.$color-accent;
   }
 }
+.navWrap{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    flex-direction: column;
+}
+.copy {
+  color: vars.$color-text;
+  font-size: 14px;
+  opacity: 0.7;
+}

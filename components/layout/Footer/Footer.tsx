@@ -34,7 +34,7 @@ export default function Footer() {
               +7 (910) 123 45 67
             </a>
           </div>
-
+        <div className={styles.navWrap}>
           <nav className={styles.nav} aria-label="Навигация в подвале">
             <ul className={styles.navList}>
               {footerNav.map((item) => (
@@ -46,7 +46,8 @@ export default function Footer() {
               ))}
             </ul>
           </nav>
-
+          <p className={styles.copy}>© Web Space</p>
+        </div>
           <div className={styles.meta}>
             <ul className={styles.socials} aria-label="Социальные сети">
               {socialLinks.map((item) => (

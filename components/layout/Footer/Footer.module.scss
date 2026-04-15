@@ -1,0 +1,109 @@
+@use "../../../styles/variables.scss" as vars;
+@use "../../../styles/mixins.scss" as *;
+
+.footer {
+  padding: 32px 0;
+}
+
+.row {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  @include respond-md {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.brand {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  color: vars.$color-text;
+  text-decoration: none;
+  font-size: 24px;
+  font-weight: 800;
+  line-height: 1;
+
+  span {
+    color: vars.$color-accent;
+  }
+}
+
+.contact {
+  color: vars.$color-text;
+  text-decoration: none;
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+.navList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  @include respond-md {
+    flex-direction: row;
+    gap: 24px;
+  }
+}
+
+.navLink {
+  color: vars.$color-text;
+  text-decoration: none;
+  font-size: 14px;
+  opacity: 0.9;
+  transition: opacity vars.$transition-default;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.meta {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.socials {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.socialLink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 36px;
+  min-height: 36px;
+  padding: 0 10px;
+  border: 1px solid vars.$color-border-soft;
+  border-radius: 999px;
+  color: vars.$color-text;
+  text-decoration: none;
+  font-size: 12px;
+  transition:
+    opacity vars.$transition-default,
+    border-color vars.$transition-default;
+
+  &:hover {
+    opacity: 1;
+    border-color: vars.$color-accent;
+  }
+}

@@ -1,0 +1,142 @@
+@use "../../../styles/variables.scss" as vars;
+@use "../../../styles/mixins.scss" as *;
+
+.hero {
+  padding: 40px 0 80px;
+}
+
+.grid {
+  display: grid;
+  gap: 32px;
+
+  @include respond-md {
+    grid-template-columns: 1.1fr 0.9fr;
+    align-items: start;
+  }
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+}
+
+.title {
+  margin: 0;
+  color: vars.$color-text;
+  font-size: 72px;
+  font-weight: 800;
+  line-height: 0.95;
+
+  span {
+    color: vars.$color-accent;
+  }
+}
+
+.subtitle {
+  max-width: 320px;
+  margin: 0;
+  color: vars.$color-text;
+  font-size: 20px;
+  line-height: 1.3;
+  opacity: 0.9;
+}
+
+.panel {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.mainCard {
+  padding: 28px;
+  border: 1px solid vars.$color-border-soft;
+  border-radius: vars.$radius-md;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.cardLabel {
+  margin: 0 0 16px;
+  color: vars.$color-accent;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.cardText {
+  margin: 0 0 20px;
+  color: vars.$color-text;
+  font-size: 15px;
+  line-height: 1.5;
+  opacity: 0.9;
+}
+
+.tabs {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+
+.tab {
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: vars.$color-text;
+  text-align: left;
+  font-size: 14px;
+  line-height: 1.4;
+  opacity: 0.7;
+  cursor: pointer;
+}
+
+.tabActive {
+  color: vars.$color-accent;
+  opacity: 1;
+  font-weight: 700;
+}
+
+.cardMeta {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.metaContent {
+  max-width: 320px;
+
+  span {
+    display: block;
+    margin-bottom: 8px;
+    color: vars.$color-accent;
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  p {
+    margin: 0 0 10px;
+    color: vars.$color-text;
+    font-size: 14px;
+    line-height: 1.4;
+  }
+
+  strong {
+    display: block;
+    margin-bottom: 8px;
+    color: vars.$color-text;
+    font-size: 16px;
+    font-weight: 700;
+  }
+}
+
+.secondaryCard {
+  width: 100%;
+  padding: 22px 24px;
+  border: 1px solid vars.$color-border-soft;
+  border-radius: vars.$radius-md;
+  background: rgba(255, 255, 255, 0.04);
+  color: vars.$color-text;
+  text-align: left;
+  font-size: 16px;
+}

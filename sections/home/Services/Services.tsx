@@ -10,13 +10,12 @@ import XdIcon from "../../../components/ui/icons/XdIcon";
 import HtmlIcon from "../../../components/ui/icons/HtmlIcon";
 import JsIcon from "../../../components/ui/icons/JsIcon";
 
-type ServiceCategoryId = "web-dev" | "seo" | "ads";
+type CategoryId = "sites" | "seo" | "ads";
 
 type ServiceItem = {
   id: string;
   title: string;
   icon: string;
-  shortTitle?: string;
 };
 
 type TechItem = {
@@ -33,225 +32,320 @@ type CmsItem = {
   height: number;
 };
 
-type ServiceCategory = {
-  id: ServiceCategoryId;
+type ServiceDetails = {
   title: string;
-  items: ServiceItem[];
-  activeItemId: string;
-  detail: {
-    title: string;
-    subtitle: string;
-    description: string;
-    price: string;
-    duration: string;
-    technologies: TechItem[];
-    cms: CmsItem[];
-  };
+  subtitle: string;
+  description: string;
+  price: string;
+  duration: string;
+  technologies: TechItem[];
+  cms: CmsItem[];
 };
 
-const serviceCategories: ServiceCategory[] = [
-  {
-    id: "web-dev",
-    title: "Создание сайтов",
-    activeItemId: "shop",
-    items: [
-      {
-        id: "landing",
-        title: "Landing Page",
-        icon: "/images/services/landing-page.png",
-      },
-      {
-        id: "corporate",
-        title: "Корпоративный сайт",
-        icon: "/images/services/corporate-site.png",
-      },
-      {
-        id: "shop",
-        title: "Интернет магазин",
-        icon: "/images/services/online-store.png",
-      },
-      {
-        id: "apps",
-        title: "Разработка приложений",
-        icon: "/images/services/app-development.png",
-      },
-      {
-        id: "support",
-        title: "Техническая поддержка",
-        icon: "/images/services/tech-support.png",
-      },
-    ],
-    detail: {
-      title: "Интернет - магазин",
-      subtitle:
-        "Комплексное решение с широкими возможностями адаптации под конкретный проект.",
-      description:
-        "Оценим возможности и цели исходя из специфики вашего бизнеса, поможем выбрать подходящую систему управления (CMS), настроим модель продаж и разработаем онлайн магазин способный к дальнейшему развитию.",
-      price: "от 150 000 руб.",
-      duration: "от 2.5 мес.",
-      technologies: [
-        { id: "axure", title: "Axure", icon: <AxureIcon /> },
-        { id: "ai", title: "Adobe Ilustrator", icon: <AiIcon /> },
-        { id: "xd", title: "Adobe XD", icon: <XdIcon /> },
-        { id: "html", title: "HTML", icon: <HtmlIcon /> },
-        { id: "js", title: "Javascript", icon: <JsIcon /> },
+const categoryTabs: { id: CategoryId; label: string }[] = [
+  { id: "sites", label: "Создание сайтов" },
+  { id: "seo", label: "Продвижение сайтов" },
+  { id: "ads", label: "Интернет реклама" },
+];
 
-        // Для этих технологий ты позже можешь подставить свои иконки
-        { id: "composer", title: "Composer" },
-        { id: "photoshop", title: "Photoshop" },
-        { id: "figma", title: "Figma" },
-        { id: "php", title: "PHP" },
-        { id: "css", title: "CSS" },
-        { id: "bootstrap", title: "Bootstrap" },
-      ],
-      cms: [
-        {
-          id: "bitrix",
-          title: "1C-Битрикс",
-          image: "/images/cms/bitrix.png",
-          width: 54,
-          height: 54,
-        },
-        {
-          id: "opencart",
-          title: "OpenCart",
-          image: "/images/cms/opencart.png",
-          width: 171,
-          height: 34,
-        },
-        {
-          id: "joomla",
-          title: "Joomla!",
-          image: "/images/cms/joomla.png",
-          width: 236,
-          height: 51,
-        },
-        {
-          id: "wordpress",
-          title: "WordPress.com",
-          image: "/images/cms/wordpress.png",
-          width: 284,
-          height: 48,
-        },
-      ],
-    },
+const siteServices: ServiceItem[] = [
+  {
+    id: "landing",
+    title: "Landing\nPage",
+    icon: "/images/services/landing-page.png",
   },
   {
-    id: "seo",
-    title: "Продвижение сайтов",
-    activeItemId: "seo",
-    items: [],
-    detail: {
-      title: "Продвижение сайтов",
-      subtitle: "Повышаем видимость сайта в поиске и увеличиваем поток заявок.",
-      description:
-        "Проводим аудит, собираем семантику, оптимизируем страницы, работаем над техническим состоянием сайта и помогаем получать больше целевого трафика.",
-      price: "от 30 000 руб.",
-      duration: "от 1 мес.",
-      technologies: [],
-      cms: [],
-    },
+    id: "corporate",
+    title: "Корпоративный\nсайт",
+    icon: "/images/services/corporate-site.png",
   },
   {
-    id: "ads",
-    title: "Интернет реклама",
-    activeItemId: "ads",
-    items: [],
-    detail: {
-      title: "Интернет реклама",
-      subtitle: "Настраиваем и ведём рекламные кампании с прозрачной аналитикой.",
-      description:
-        "Запускаем рекламные кампании в поиске, сетях и социальных площадках, тестируем объявления и оптимизируем стоимость заявки.",
-      price: "от 25 000 руб.",
-      duration: "от 1 мес.",
-      technologies: [],
-      cms: [],
-    },
+    id: "shop",
+    title: "Интернет\nмагазин",
+    icon: "/images/services/online-store.png",
+  },
+  {
+    id: "apps",
+    title: "Разработка\nприложений",
+    icon: "/images/services/app-development.png",
+  },
+  {
+    id: "support",
+    title: "Техническая\nподдержка",
+    icon: "/images/services/tech-support.png",
   },
 ];
 
-export default function Services() {
-  const [activeCategoryId, setActiveCategoryId] =
-    useState<ServiceCategoryId>("web-dev");
+const siteServiceDetails: Record<string, ServiceDetails> = {
+  landing: {
+    title: "Landing Page",
+    subtitle: "Быстрый запуск продукта или услуги с высокой конверсией.",
+    description:
+      "Создадим одностраничный сайт, продуманный под рекламный трафик и конкретную цель: получение заявок, регистрацию или продажу продукта.",
+    price: "от 50 000 руб.",
+    duration: "от 2 нед.",
+    technologies: [
+      { id: "axure", title: "Axure", icon: <AxureIcon /> },
+      { id: "ai", title: "Adobe Illustrator", icon: <AiIcon /> },
+      { id: "xd", title: "Adobe XD", icon: <XdIcon /> },
+      { id: "html", title: "HTML", icon: <HtmlIcon /> },
+      { id: "js", title: "Javascript", icon: <JsIcon /> },
+      { id: "figma", title: "Figma" },
+      { id: "css", title: "CSS" },
+    ],
+    cms: [
+      {
+        id: "bitrix",
+        title: "1C-Битрикс",
+        image: "/images/cms/bitrix.png",
+        width: 44,
+        height: 44,
+      },
+      {
+        id: "wordpress",
+        title: "WordPress.com",
+        image: "/images/cms/wordpress.png",
+        width: 180,
+        height: 30,
+      },
+    ],
+  },
 
-  const activeCategory = useMemo(
-    () =>
-      serviceCategories.find((category) => category.id === activeCategoryId) ??
-      serviceCategories[0],
-    [activeCategoryId]
-  );
+  corporate: {
+    title: "Корпоративный сайт",
+    subtitle: "Представительство компании в интернете с акцентом на доверие.",
+    description:
+      "Разработаем структуру и страницы компании, покажем услуги, преимущества, кейсы и контактную информацию для удобной коммуникации с клиентами.",
+    price: "от 100 000 руб.",
+    duration: "от 1.5 мес.",
+    technologies: [
+      { id: "axure", title: "Axure", icon: <AxureIcon /> },
+      { id: "ai", title: "Adobe Illustrator", icon: <AiIcon /> },
+      { id: "xd", title: "Adobe XD", icon: <XdIcon /> },
+      { id: "html", title: "HTML", icon: <HtmlIcon /> },
+      { id: "js", title: "Javascript", icon: <JsIcon /> },
+      { id: "figma", title: "Figma" },
+      { id: "php", title: "PHP" },
+      { id: "css", title: "CSS" },
+    ],
+    cms: [
+      {
+        id: "bitrix",
+        title: "1C-Битрикс",
+        image: "/images/cms/bitrix.png",
+        width: 44,
+        height: 44,
+      },
+      {
+        id: "joomla",
+        title: "Joomla!",
+        image: "/images/cms/joomla.png",
+        width: 148,
+        height: 32,
+      },
+      {
+        id: "wordpress",
+        title: "WordPress.com",
+        image: "/images/cms/wordpress.png",
+        width: 180,
+        height: 30,
+      },
+    ],
+  },
+
+  shop: {
+    title: "Интернет - магазин",
+    subtitle:
+      "Комплексное решение с широкими возможностями адаптации под конкретный проект.",
+    description:
+      "Оценим возможности и цели исходя из специфики вашего бизнеса, поможем выбрать подходящую систему управления (CMS), настроим модель продаж и разработаем онлайн магазин способный к дальнейшему развитию.",
+    price: "от 150 000 руб.",
+    duration: "от 2.5 мес.",
+    technologies: [
+      { id: "axure", title: "Axure", icon: <AxureIcon /> },
+      { id: "ai", title: "Adobe Illustrator", icon: <AiIcon /> },
+      { id: "xd", title: "Adobe XD", icon: <XdIcon /> },
+      { id: "html", title: "HTML", icon: <HtmlIcon /> },
+      { id: "js", title: "Javascript", icon: <JsIcon /> },
+      { id: "composer", title: "Composer" },
+      { id: "photoshop", title: "Photoshop" },
+      { id: "figma", title: "Figma" },
+      { id: "php", title: "PHP" },
+      { id: "css", title: "CSS" },
+      { id: "bootstrap", title: "Bootstrap" },
+    ],
+    cms: [
+      {
+        id: "bitrix",
+        title: "1C-Битрикс",
+        image: "/images/cms/bitrix.png",
+        width: 44,
+        height: 44,
+      },
+      {
+        id: "opencart",
+        title: "OpenCart",
+        image: "/images/cms/opencart.png",
+        width: 126,
+        height: 24,
+      },
+      {
+        id: "joomla",
+        title: "Joomla!",
+        image: "/images/cms/joomla.png",
+        width: 148,
+        height: 32,
+      },
+      {
+        id: "wordpress",
+        title: "WordPress.com",
+        image: "/images/cms/wordpress.png",
+        width: 180,
+        height: 30,
+      },
+    ],
+  },
+
+  apps: {
+    title: "Разработка приложений",
+    subtitle: "Интерфейсы и цифровые продукты под задачи бизнеса.",
+    description:
+      "Создадим удобные мобильные и веб-приложения для автоматизации процессов, взаимодействия с клиентами и развития вашего цифрового продукта.",
+    price: "от 180 000 руб.",
+    duration: "от 2 мес.",
+    technologies: [
+      { id: "axure", title: "Axure", icon: <AxureIcon /> },
+      { id: "ai", title: "Adobe Illustrator", icon: <AiIcon /> },
+      { id: "xd", title: "Adobe XD", icon: <XdIcon /> },
+      { id: "html", title: "HTML", icon: <HtmlIcon /> },
+      { id: "js", title: "Javascript", icon: <JsIcon /> },
+      { id: "figma", title: "Figma" },
+      { id: "php", title: "PHP" },
+      { id: "css", title: "CSS" },
+      { id: "bootstrap", title: "Bootstrap" },
+    ],
+    cms: [],
+  },
+
+  support: {
+    title: "Техническая поддержка",
+    subtitle: "Поддержка, обновления и развитие уже существующих проектов.",
+    description:
+      "Следим за стабильностью, исправляем ошибки, вносим правки, обновляем функциональность и обеспечиваем бесперебойную работу сайта.",
+    price: "от 15 000 руб.",
+    duration: "от 1 мес.",
+    technologies: [
+      { id: "html", title: "HTML", icon: <HtmlIcon /> },
+      { id: "js", title: "Javascript", icon: <JsIcon /> },
+      { id: "php", title: "PHP" },
+      { id: "css", title: "CSS" },
+      { id: "bootstrap", title: "Bootstrap" },
+    ],
+    cms: [
+      {
+        id: "bitrix",
+        title: "1C-Битрикс",
+        image: "/images/cms/bitrix.png",
+        width: 44,
+        height: 44,
+      },
+      {
+        id: "opencart",
+        title: "OpenCart",
+        image: "/images/cms/opencart.png",
+        width: 126,
+        height: 24,
+      },
+      {
+        id: "joomla",
+        title: "Joomla!",
+        image: "/images/cms/joomla.png",
+        width: 148,
+        height: 32,
+      },
+      {
+        id: "wordpress",
+        title: "WordPress.com",
+        image: "/images/cms/wordpress.png",
+        width: 180,
+        height: 30,
+      },
+    ],
+  },
+};
+
+export default function Services() {
+  const [activeCategory, setActiveCategory] = useState<CategoryId>("sites");
+  const [activeService, setActiveService] = useState<string>("shop");
+
+  const currentDetails = useMemo(() => {
+    if (activeCategory !== "sites") return null;
+    return siteServiceDetails[activeService];
+  }, [activeCategory, activeService]);
 
   return (
     <section className={styles.services} id="services">
       <div className={styles.container}>
-        <h2 className={styles.title}>
+        <h2 className={styles.heading}>
           МЫ СФОРМИРОВАЛИ ТРИ ФОРМАТА УСЛУГ,
           <br />
           ПОКРЫВАЮЩИЕ ЗАПРОСЫ ЛЮБОЙ КОМПАНИИ:
         </h2>
 
-        <div className={styles.categoryTabs} role="tablist" aria-label="Категории услуг">
-          {serviceCategories.map((category) => {
-            const isActive = category.id === activeCategoryId;
-
-            return (
-              <button
-                key={category.id}
-                type="button"
-                role="tab"
-                aria-selected={isActive}
-                className={`${styles.categoryTab} ${
-                  isActive ? styles.categoryTabActive : ""
-                }`}
-                onClick={() => setActiveCategoryId(category.id)}
-              >
-                {category.title}
-              </button>
-            );
-          })}
+        <div className={styles.tabs}>
+          {categoryTabs.map((tab) => (
+            <button
+              key={tab.id}
+              type="button"
+              className={`${styles.tab} ${
+                activeCategory === tab.id ? styles.tabActive : ""
+              }`}
+              onClick={() => setActiveCategory(tab.id)}
+            >
+              {tab.label}
+            </button>
+          ))}
         </div>
 
-        {activeCategory.id === "web-dev" && (
+        {activeCategory === "sites" && currentDetails && (
           <>
-            <div className={styles.serviceIcons}>
-              {activeCategory.items.map((item) => {
-                const isActive = item.id === activeCategory.activeItemId;
+            <div className={styles.servicesList}>
+              {siteServices.map((item) => {
+                const isActive = item.id === activeService;
 
                 return (
-                  <div
+                  <button
                     key={item.id}
-                    className={`${styles.serviceIconCard} ${
-                      isActive ? styles.serviceIconCardActive : ""
+                    type="button"
+                    className={`${styles.serviceItem} ${
+                      isActive ? styles.serviceItemActive : ""
                     }`}
+                    onClick={() => setActiveService(item.id)}
                   >
-                    <div className={styles.serviceIconImageWrap}>
+                    <span className={styles.serviceIconWrap}>
                       <Image
                         src={item.icon}
-                        alt={item.title}
-                        width={120}
-                        height={120}
-                        className={styles.serviceIconImage}
+                        alt={item.title.replace("\n", " ")}
+                        width={88}
+                        height={88}
+                        className={styles.serviceIcon}
                       />
-                    </div>
-                    <p className={styles.serviceIconTitle}>{item.title}</p>
-                  </div>
+                    </span>
+                    <span className={styles.serviceLabel}>
+                      {item.title}
+                    </span>
+                  </button>
                 );
               })}
             </div>
 
             <div className={styles.content}>
               <div className={styles.left}>
-                <h3 className={styles.serviceTitle}>
-                  {activeCategory.detail.title}
-                </h3>
+                <h3 className={styles.title}>{currentDetails.title}</h3>
 
-                <p className={styles.serviceSubtitle}>
-                  {activeCategory.detail.subtitle}
-                </p>
+                <p className={styles.subtitle}>{currentDetails.subtitle}</p>
 
-                <p className={styles.serviceDescription}>
-                  {activeCategory.detail.description}
-                </p>
+                <p className={styles.description}>{currentDetails.description}</p>
 
                 <div className={styles.actions}>
                   <button type="button" className={styles.primaryButton}>
@@ -264,85 +358,67 @@ export default function Services() {
                 </div>
               </div>
 
-              <div className={styles.right}>
-                <div className={styles.detailsCard}>
-                  <div className={styles.metrics}>
-                    <div className={styles.metric}>
-                      <p className={styles.metricLabel}>Стоимость разработки</p>
-                      <p className={styles.metricValue}>
-                        {activeCategory.detail.price}
-                      </p>
-                    </div>
-
-                    <div className={styles.metric}>
-                      <p className={styles.metricLabel}>Время разработки</p>
-                      <p className={styles.metricValue}>
-                        {activeCategory.detail.duration}
-                      </p>
-                    </div>
+              <div className={styles.infoCard}>
+                <div className={styles.metrics}>
+                  <div className={styles.metric}>
+                    <p className={styles.metricLabel}>Стоимость разработки</p>
+                    <p className={styles.metricValue}>{currentDetails.price}</p>
                   </div>
 
-                  <div className={styles.techSection}>
-                    <p className={styles.sectionLabel}>Ключевые технологии</p>
-
-                    <div className={styles.techList}>
-                      {activeCategory.detail.technologies.map((tech) => (
-                        <div key={tech.id} className={styles.techBadge}>
-                          {tech.icon && (
-                            <span className={styles.techBadgeIcon}>
-                              {tech.icon}
-                            </span>
-                          )}
-                          <span className={styles.techBadgeText}>
-                            {tech.title}
-                          </span>
-                        </div>
-                      ))}
-                    </div>
+                  <div className={styles.metric}>
+                    <p className={styles.metricLabel}>Время разработки</p>
+                    <p className={styles.metricValue}>{currentDetails.duration}</p>
                   </div>
+                </div>
 
-                  <div className={styles.cmsSection}>
-                    <p className={styles.sectionLabel}>Рекомендуемые CMS</p>
+                <div className={styles.section}>
+                  <p className={styles.sectionTitle}>Ключевые технологии</p>
+
+                  <div className={styles.techList}>
+                    {currentDetails.technologies.map((tech) => (
+                      <div key={tech.id} className={styles.techItem}>
+                        {tech.icon && (
+                          <span className={styles.techIcon}>{tech.icon}</span>
+                        )}
+                        <span>{tech.title}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {currentDetails.cms.length > 0 && (
+                  <div className={styles.section}>
+                    <p className={styles.sectionTitle}>Рекомендуемые CMS</p>
 
                     <div className={styles.cmsList}>
-                      {activeCategory.detail.cms.map((cms) => (
+                      {currentDetails.cms.map((cms) => (
                         <div key={cms.id} className={styles.cmsItem}>
                           <Image
                             src={cms.image}
                             alt={cms.title}
                             width={cms.width}
                             height={cms.height}
-                            className={styles.cmsImage}
+                            className={styles.cmsLogo}
                           />
                         </div>
                       ))}
                     </div>
                   </div>
-                </div>
+                )}
               </div>
             </div>
           </>
         )}
 
-        {activeCategory.id === "seo" && (
-          <div className={styles.placeholderBlock}>
-            <h3 className={styles.placeholderTitle}>
-              Продвижение сайтов
-            </h3>
-            <p className={styles.placeholderText}>
-              Здесь будет контент для вкладки «Продвижение сайтов».
-            </p>
+        {activeCategory === "seo" && (
+          <div className={styles.placeholder}>
+            <p>Блок «Продвижение сайтов» будет заполнен по аналогии.</p>
           </div>
         )}
 
-        {activeCategory.id === "ads" && (
-          <div className={styles.placeholderBlock}>
-            <h3 className={styles.placeholderTitle}>
-              Интернет реклама
-            </h3>
-            <p className={styles.placeholderText}>
-              Здесь будет контент для вкладки «Интернет реклама».
-            </p>
+        {activeCategory === "ads" && (
+          <div className={styles.placeholder}>
+            <p>Блок «Интернет реклама» будет заполнен по аналогии.</p>
           </div>
         )}
       </div>

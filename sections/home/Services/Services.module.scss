@@ -1,143 +1,148 @@
 .services {
   position: relative;
-  padding: 72px 0 110px;
+  padding: 46px 0 72px;
+  background: #000;
+  color: #fff;
   overflow: hidden;
 }
 
 .container {
-  position: relative;
-  z-index: 2;
   width: 100%;
-  max-width: 1360px;
+  max-width: 1320px;
   margin: 0 auto;
-  padding: 0 32px;
+  padding: 0 28px;
 }
 
-.title {
-  margin: 0 0 44px;
-  max-width: 770px;
+.heading {
+  margin: 0 0 34px;
+  max-width: 700px;
   font-weight: 800;
-  font-size: 28px;
-  line-height: 1.18;
+  font-size: 17px;
+  line-height: 1.28;
   letter-spacing: 0.02em;
   text-transform: uppercase;
-  color: #ffffff;
+  color: #fff;
 }
 
-.categoryTabs {
+.tabs {
   display: flex;
-  align-items: center;
   gap: 48px;
-  margin-bottom: 56px;
+  margin-bottom: 38px;
 }
 
-.categoryTab {
+.tab {
   padding: 0;
   border: none;
   background: transparent;
   font-weight: 700;
-  font-size: 24px;
+  font-size: 17px;
   line-height: 1.2;
   color: rgba(255, 255, 255, 0.55);
   cursor: pointer;
   transition: color 0.2s ease;
 }
 
-.categoryTab:hover {
-  color: rgba(255, 255, 255, 0.82);
+.tab:hover {
+  color: rgba(255, 255, 255, 0.8);
 }
 
-.categoryTabActive {
-  color: #f4c20f;
+.tabActive {
+  color: #f3c108;
 }
 
-.serviceIcons {
+.servicesList {
   display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: 26px;
-  margin-bottom: 64px;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 34px;
+  margin-bottom: 44px;
 }
 
-.serviceIconCard {
+.serviceItem {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 20px;
-  cursor: default;
+  gap: 14px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  color: #fff;
+  transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
-.serviceIconCardActive .serviceIconImageWrap {
-  filter: brightness(1.12);
+.serviceItem:hover {
+  opacity: 0.88;
 }
 
-.serviceIconImageWrap {
+.serviceItemActive {
+  transform: translateY(-1px);
+}
+
+.serviceIconWrap {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 130px;
-  height: 130px;
+  width: 92px;
+  height: 92px;
 }
 
-.serviceIconImage {
+.serviceIcon {
   width: auto;
   height: auto;
-  max-width: 125px;
-  max-height: 125px;
+  max-width: 92px;
+  max-height: 92px;
   object-fit: contain;
 }
 
-.serviceIconTitle {
-  margin: 0;
-  max-width: 160px;
-  font-size: 20px;
-  line-height: 1.2;
-  color: #ffffff;
+.serviceLabel {
+  font-size: 17px;
+  line-height: 1.22;
   text-align: center;
   white-space: pre-line;
+  color: #fff;
 }
 
 .content {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 650px;
-  gap: 70px;
+  grid-template-columns: minmax(0, 1fr) 545px;
+  gap: 54px;
   align-items: start;
 }
 
 .left {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  max-width: 510px;
 }
 
-.serviceTitle {
+.title {
   margin: 0 0 18px;
   font-weight: 800;
-  font-size: 64px;
-  line-height: 1;
-  color: #ffffff;
+  font-size: 50px;
+  line-height: 0.96;
+  letter-spacing: -0.02em;
+  color: #fff;
 }
 
-.serviceSubtitle {
-  margin: 0 0 28px;
-  max-width: 610px;
+.subtitle {
+  margin: 0 0 24px;
+  max-width: 470px;
   font-weight: 500;
-  font-size: 24px;
-  line-height: 1.22;
-  color: #f4c20f;
+  font-size: 18px;
+  line-height: 1.28;
+  color: #f3c108;
 }
 
-.serviceDescription {
-  margin: 0 0 42px;
-  max-width: 560px;
-  font-size: 22px;
-  line-height: 1.35;
-  color: rgba(255, 255, 255, 0.85);
+.description {
+  margin: 0 0 30px;
+  max-width: 460px;
+  font-size: 16px;
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.9);
 }
 
 .actions {
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  gap: 14px;
 }
 
 .primaryButton,
@@ -145,16 +150,18 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 290px;
-  height: 76px;
-  padding: 0 32px;
+  width: fit-content;
+  min-width: 240px;
+  height: 54px;
+  padding: 0 28px;
   border-radius: 999px;
+  border: none;
   font-weight: 800;
-  font-size: 26px;
+  font-size: 16px;
   line-height: 1;
   text-transform: uppercase;
   cursor: pointer;
-  transition: transform 0.2s ease, opacity 0.2s ease, background-color 0.2s ease;
+  transition: transform 0.2s ease, opacity 0.2s ease;
 }
 
 .primaryButton:hover,
@@ -163,106 +170,88 @@
 }
 
 .primaryButton {
-  border: none;
-  background: #f4c20f;
-  color: #000000;
+  background: #f3c108;
+  color: #000;
 }
 
 .secondaryButton {
-  border: none;
-  background: #000000;
-  color: #ffffff;
+  background: #050505;
+  color: #fff;
 }
 
-.right {
-  display: flex;
-  justify-content: flex-end;
-}
-
-.detailsCard {
-  width: 100%;
-  padding: 34px 38px 36px;
-  border-radius: 28px;
-  background: rgba(27, 27, 27, 0.68);
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(10px);
+.infoCard {
+  padding: 28px 30px 26px;
+  border-radius: 22px;
+  background: rgba(20, 20, 20, 0.9);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.04);
 }
 
 .metrics {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 36px;
-  margin-bottom: 42px;
+  gap: 26px;
+  margin-bottom: 28px;
 }
 
 .metricLabel {
-  margin: 0 0 12px;
-  font-size: 24px;
-  line-height: 1.2;
-  color: #f4c20f;
+  margin: 0 0 10px;
+  font-size: 14px;
+  line-height: 1.25;
+  color: #f3c108;
 }
 
 .metricValue {
   margin: 0;
   font-weight: 800;
-  font-size: 58px;
-  line-height: 1;
-  color: #ffffff;
+  font-size: 38px;
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+  color: #fff;
 }
 
-.techSection {
-  margin-bottom: 36px;
+.section + .section {
+  margin-top: 22px;
 }
 
-.sectionLabel {
-  margin: 0 0 18px;
-  font-size: 24px;
-  line-height: 1.2;
-  color: #f4c20f;
+.sectionTitle {
+  margin: 0 0 12px;
+  font-size: 14px;
+  line-height: 1.25;
+  color: #f3c108;
 }
 
 .techList {
   display: flex;
   flex-wrap: wrap;
-  gap: 12px;
+  gap: 8px;
 }
 
-.techBadge {
+.techItem {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  min-height: 38px;
-  padding: 7px 14px;
+  gap: 6px;
+  min-height: 30px;
+  padding: 6px 11px;
   border-radius: 999px;
-  background: rgba(244, 194, 15, 0.16);
-  color: #f5f5f5;
-  font-size: 21px;
+  background: rgba(243, 193, 8, 0.18);
+  font-size: 13px;
   line-height: 1;
+  color: #fff;
   white-space: nowrap;
 }
 
-.techBadgeIcon {
+.techIcon {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
 }
 
-.techBadgeText {
-  display: inline-flex;
-  align-items: center;
-}
-
-.cmsSection {
-  display: flex;
-  flex-direction: column;
-}
-
 .cmsList {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 26px 32px;
+  gap: 16px 24px;
 }
 
 .cmsItem {
@@ -271,185 +260,132 @@
   justify-content: center;
 }
 
-.cmsImage {
+.cmsLogo {
   display: block;
   width: auto;
   height: auto;
-  max-height: 54px;
+  max-height: 32px;
   object-fit: contain;
 }
 
-.placeholderBlock {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  padding: 48px;
-  border-radius: 28px;
-  background: rgba(27, 27, 27, 0.55);
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05);
-}
-
-.placeholderTitle {
-  margin: 0;
-  font-weight: 800;
-  font-size: 36px;
-  line-height: 1.1;
-  color: #ffffff;
-}
-
-.placeholderText {
-  margin: 0;
-  max-width: 680px;
-  font-size: 22px;
-  line-height: 1.35;
+.placeholder {
+  padding: 24px 0;
   color: rgba(255, 255, 255, 0.8);
-}
-
-@media (max-width: 1440px) {
-  .serviceTitle {
-    font-size: 54px;
-  }
-
-  .metricValue {
-    font-size: 46px;
-  }
-
-  .content {
-    grid-template-columns: minmax(0, 1fr) 600px;
-    gap: 54px;
-  }
+  font-size: 16px;
+  line-height: 1.4;
 }
 
 @media (max-width: 1200px) {
-  .categoryTabs {
-    gap: 28px;
-    flex-wrap: wrap;
-  }
-
-  .serviceIcons {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-
   .content {
     grid-template-columns: 1fr;
-    gap: 40px;
+    gap: 34px;
   }
 
-  .right {
-    justify-content: flex-start;
-  }
-
-  .detailsCard {
-    max-width: 100%;
+  .infoCard {
+    max-width: 620px;
   }
 }
 
 @media (max-width: 900px) {
-  .services {
-    padding: 56px 0 84px;
+  .tabs {
+    gap: 22px;
+    flex-wrap: wrap;
   }
 
-  .container {
-    padding: 0 20px;
+  .servicesList {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px 20px;
   }
 
   .title {
-    font-size: 22px;
-    margin-bottom: 32px;
+    font-size: 40px;
   }
 
-  .categoryTab {
-    font-size: 20px;
-  }
-
-  .serviceIcons {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 22px 18px;
-    margin-bottom: 42px;
-  }
-
-  .serviceTitle {
-    font-size: 42px;
-  }
-
-  .serviceSubtitle {
-    font-size: 22px;
-  }
-
-  .serviceDescription {
-    font-size: 18px;
+  .subtitle {
+    font-size: 17px;
   }
 
   .metrics {
     grid-template-columns: 1fr;
-    gap: 24px;
-  }
-
-  .metricLabel,
-  .sectionLabel {
-    font-size: 20px;
+    gap: 18px;
   }
 
   .metricValue {
-    font-size: 38px;
-  }
-
-  .techBadge {
-    font-size: 17px;
-  }
-
-  .primaryButton,
-  .secondaryButton {
-    min-width: 250px;
-    height: 62px;
-    font-size: 20px;
+    font-size: 32px;
   }
 }
 
 @media (max-width: 640px) {
-  .serviceIcons {
-    grid-template-columns: 1fr 1fr;
+  .services {
+    padding: 34px 0 56px;
   }
 
-  .serviceIconImageWrap {
-    width: 100px;
-    height: 100px;
+  .container {
+    padding: 0 18px;
   }
 
-  .serviceIconImage {
-    max-width: 94px;
-    max-height: 94px;
+  .heading {
+    font-size: 15px;
   }
 
-  .serviceIconTitle {
-    font-size: 16px;
+  .tabs {
+    gap: 18px;
+    margin-bottom: 26px;
   }
 
-  .serviceTitle {
+  .tab {
+    font-size: 15px;
+  }
+
+  .servicesList {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 22px 16px;
+    margin-bottom: 34px;
+  }
+
+  .serviceIconWrap {
+    width: 80px;
+    height: 80px;
+  }
+
+  .serviceIcon {
+    max-width: 80px;
+    max-height: 80px;
+  }
+
+  .serviceLabel {
+    font-size: 15px;
+  }
+
+  .title {
     font-size: 34px;
   }
 
-  .serviceSubtitle {
-    font-size: 18px;
-  }
-
-  .serviceDescription {
+  .subtitle {
     font-size: 16px;
   }
 
-  .detailsCard {
-    padding: 24px;
-    border-radius: 22px;
-  }
-
-  .cmsList {
-    gap: 20px 24px;
+  .description {
+    font-size: 15px;
   }
 
   .primaryButton,
   .secondaryButton {
     min-width: 220px;
-    height: 56px;
-    font-size: 18px;
+    height: 50px;
+    font-size: 15px;
+  }
+
+  .infoCard {
+    padding: 22px 20px;
+    border-radius: 18px;
+  }
+
+  .metricValue {
+    font-size: 28px;
+  }
+
+  .cmsLogo {
+    max-height: 26px;
   }
 }

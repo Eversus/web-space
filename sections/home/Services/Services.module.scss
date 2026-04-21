@@ -1,7 +1,6 @@
 .services {
   position: relative;
   padding: 46px 0 72px;
-  background: #000;
   color: #fff;
   overflow: hidden;
 }
@@ -76,6 +75,19 @@
 
 .serviceItemActive {
   transform: translateY(-1px);
+}
+
+.serviceItemTextOnly {
+  justify-content: center;
+  min-height: 120px;
+  padding: 20px 14px;
+  border-radius: 18px;
+  background: rgba(20, 20, 20, 0.55);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+}
+
+.serviceItemTextOnly .serviceLabel {
+  max-width: 160px;
 }
 
 .serviceIconWrap {
@@ -203,9 +215,9 @@
 .metricValue {
   margin: 0;
   font-weight: 800;
-  font-size: 38px;
-  line-height: 1.02;
-  letter-spacing: -0.02em;
+  font-size: 22px;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
   color: #fff;
 }
 
@@ -240,10 +252,11 @@
   white-space: nowrap;
 }
 
-.techIcon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+.techImage {
+  display: block;
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
   flex-shrink: 0;
 }
 
@@ -263,16 +276,8 @@
 .cmsLogo {
   display: block;
   width: auto;
-  height: auto;
   max-height: 32px;
   object-fit: contain;
-}
-
-.placeholder {
-  padding: 24px 0;
-  color: rgba(255, 255, 255, 0.8);
-  font-size: 16px;
-  line-height: 1.4;
 }
 
 @media (max-width: 1200px) {
@@ -308,10 +313,6 @@
   .metrics {
     grid-template-columns: 1fr;
     gap: 18px;
-  }
-
-  .metricValue {
-    font-size: 32px;
   }
 }
 
@@ -379,10 +380,6 @@
   .infoCard {
     padding: 22px 20px;
     border-radius: 18px;
-  }
-
-  .metricValue {
-    font-size: 28px;
   }
 
   .cmsLogo {

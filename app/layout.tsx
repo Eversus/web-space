@@ -1,4 +1,5 @@
 import "./globals.scss";
+import SiteBackground from "../components/layout/SiteBackground/SiteBackground";
 
 export const metadata = {
   title: "Web Space",
@@ -12,7 +13,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ru">
-      <body>{children}</body>
+      <body>
+        <SiteBackground />
+        {children}
+      </body>
     </html>
   );
 }
